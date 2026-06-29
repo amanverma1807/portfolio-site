@@ -1,0 +1,84 @@
+---
+import ProjectCard from './ProjectCard.astro';
+---
+
+<section id="python-projects" class="python-projects-section tile-bg-2">
+  <div class="section-container">
+    <div class="section-header reveal">
+      <span class="section-label">Backend & Automation</span>
+      <h2 class="display-lg section-title">Python Projects</h2>
+      <p class="body-copy section-subtitle">
+        Script utilities, custom web scrapers, data pipelines, and API integrations engineered with Python.
+      </p>
+    </div>
+
+    <div class="projects-grid">
+      <div class="grid-item">
+        <ProjectCard
+          title="Aether Parser Engine"
+          description="An asynchronous web scraping pipeline designed to extract nested retail catalogs. Implements request throttling, IP rotation, and schemas checking via Pydantic."
+          tags={['Python', 'asyncio', 'Playwright', 'PostgreSQL']}
+          githubUrl="https://github.com"
+          mockupType="terminal"
+          accentColor="#30d158"
+        />
+      </div>
+      
+      <div class="grid-item">
+        <ProjectCard
+          title="PyFlow Data ETL Pipeline"
+          description="A background daemon task scheduler that processes large-scale text transformation queues. Logs runtime alerts, memory footprints, and pipeline errors."
+          tags={['Python', 'RabbitMQ', 'Pandas', 'Docker']}
+          githubUrl="https://github.com"
+          mockupType="terminal"
+          accentColor="#bf5af2"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .python-projects-section {
+    position: relative;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .section-header {
+    margin-bottom: var(--spacing-xxl);
+    max-width: 600px;
+  }
+
+  .section-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: inline-block;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .section-title {
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text);
+  }
+
+  .section-subtitle {
+    color: var(--color-text-muted);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+  }
+
+  /* Responsive tweak */
+  @media (max-width: 834px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+    }
+  }
+</style>

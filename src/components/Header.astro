@@ -1,0 +1,300 @@
+---
+import Button from './Button.astro';
+---
+
+<header id="global-header">
+  <div class="nav-container">
+    <a href="#" class="logo-link" aria-label="Aman Verma Portfolio Home">
+      <span class="monogram">AV</span>
+      <span class="logo-text">amanverma.online</span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav" aria-label="Desktop navigation">
+      <a href="#about" class="nav-item">About</a>
+      <a href="#projects" class="nav-item">Projects</a>
+      <a href="#skills" class="nav-item">Skills</a>
+      <a href="#tech" class="nav-item">Tech Stack</a>
+      <a href="#contact" class="nav-item">Contact</a>
+    </nav>
+
+    <div class="nav-cta">
+      <Button href="#contact" variant="primary" class="nav-btn">Connect</Button>
+      
+      <!-- Mobile menu trigger -->
+      <button 
+        id="menu-trigger" 
+        class="menu-hamburger btn-press" 
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-nav-drawer"
+      >
+        <span class="hamburger-line line-top"></span>
+        <span class="hamburger-line line-bottom"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Navigation Drawer -->
+  <div id="mobile-nav-drawer" class="mobile-drawer" aria-hidden="true">
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <a href="#about" class="mobile-nav-item">About</a>
+      <a href="#projects" class="mobile-nav-item">Projects</a>
+      <a href="#skills" class="mobile-nav-item">Skills</a>
+      <a href="#tech" class="mobile-nav-item">Tech Stack</a>
+      <a href="#contact" class="mobile-nav-item">Contact</a>
+      <div class="mobile-drawer-cta">
+        <Button href="#contact" variant="primary" style="width: 100%;">Connect</Button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<style>
+  #global-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: var(--color-glass);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid var(--color-border);
+    height: 52px; /* Apple sub-nav height standard */
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+  }
+
+  .nav-container {
+    max-width: 1024px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Logo */
+  .logo-link {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    text-decoration: none;
+    color: var(--color-text);
+    font-weight: 600;
+    transition: opacity 0.2s ease;
+  }
+
+  .logo-link:hover {
+    opacity: 0.8;
+  }
+
+  .monogram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background-color: var(--color-text);
+    color: var(--color-bg-black);
+    border-radius: var(--rounded-sm);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+  }
+
+  .logo-text {
+    font-size: 14px;
+    letter-spacing: -0.02em;
+    font-family: var(--font-display);
+  }
+
+  /* Desktop Menu */
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xl);
+  }
+
+  .nav-item {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.25s ease;
+  }
+
+  .nav-item:hover {
+    color: var(--color-text);
+  }
+
+  .nav-cta {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+  }
+
+  /* Adjust primary button specifically for navigation header size */
+  :global(.nav-btn) {
+    padding: 6px 14px !important;
+    font-size: 12px !important;
+  }
+
+  /* Hamburger Menu Trigger */
+  .menu-hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    position: relative;
+    z-index: 110;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .hamburger-line {
+    display: block;
+    width: 18px;
+    height: 1.5px;
+    background-color: var(--color-text);
+    transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.25s ease;
+  }
+
+  /* Hamburger Animation */
+  #global-header.menu-open .line-top {
+    transform: translateY(2.75px) rotate(45deg);
+  }
+
+  #global-header.menu-open .line-bottom {
+    transform: translateY(-2.75px) rotate(-45deg);
+  }
+
+  /* Mobile Drawer */
+  .mobile-drawer {
+    display: none;
+    position: fixed;
+    top: 52px;
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - 52px);
+    background-color: var(--color-bg-black);
+    z-index: 105;
+    padding: var(--spacing-xl);
+    transform: translateY(-20px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  #global-header.menu-open + .mobile-drawer {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .mobile-nav-item {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--color-text);
+    text-decoration: none;
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 1px solid var(--color-border);
+    transition: color 0.2s ease;
+  }
+
+  .mobile-nav-item:hover {
+    color: var(--color-primary);
+  }
+
+  .mobile-drawer-cta {
+    margin-top: var(--spacing-lg);
+  }
+
+  /* Responsive styles */
+  @media (max-width: 834px) {
+    .desktop-nav {
+      display: none;
+    }
+
+    .menu-hamburger {
+      display: flex;
+    }
+
+    .mobile-drawer {
+      display: block;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .logo-text {
+      display: none;
+    }
+    
+    .nav-container {
+      padding: 0 var(--spacing-md);
+    }
+  }
+</style>
+
+<script>
+  const initNavDrawer = () => {
+    const trigger = document.getElementById('menu-trigger');
+    const header = document.getElementById('global-header');
+    const drawer = document.getElementById('mobile-nav-drawer');
+    const drawerLinks = document.querySelectorAll('.mobile-nav-item');
+
+    if (!trigger || !header || !drawer) return;
+
+    const toggleMenu = () => {
+      const isOpen = header.classList.toggle('menu-open');
+      trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      drawer.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+      
+      if (isOpen) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    };
+
+    const closeMenu = () => {
+      header.classList.remove('menu-open');
+      trigger.setAttribute('aria-expanded', 'false');
+      drawer.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    };
+
+    trigger.addEventListener('click', toggleMenu);
+
+    // Close when clicking mobile links
+    drawerLinks.forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && header.classList.contains('menu-open')) {
+        closeMenu();
+        trigger.focus();
+      }
+    });
+  };
+
+  initNavDrawer();
+  document.addEventListener('astro:after-swap', initNavDrawer);
+</script>

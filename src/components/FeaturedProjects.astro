@@ -1,0 +1,86 @@
+---
+import ProjectCard from './ProjectCard.astro';
+---
+
+<section id="projects" class="projects-section tile-bg-black">
+  <div class="section-container">
+    <div class="section-header reveal">
+      <span class="section-label">Case Studies</span>
+      <h2 class="display-lg section-title">Featured Projects</h2>
+      <p class="body-copy section-subtitle">
+        A selection of high-performance web applications built with modern frontend frameworks and backend databases.
+      </p>
+    </div>
+
+    <div class="projects-grid">
+      <div class="grid-item">
+        <ProjectCard
+          title="Zenith Headless Commerce"
+          description="A fast headless e-commerce frontend built using Astro, React, and Redis. Features sub-50ms TTFB, fully integrated Stripe cart flows, and multi-currency localized routing."
+          tags={['Astro', 'React', 'Redis', 'Stripe API']}
+          demoUrl="https://github.com"
+          githubUrl="https://github.com"
+          mockupType="browser"
+          accentColor="#2997ff"
+        />
+      </div>
+      
+      <div class="grid-item">
+        <ProjectCard
+          title="Veloce Analytics Portal"
+          description="A real-time telemetry dashboard visualizing server health metrics and data stream events. Employs persistent WebSockets for low-latency live graphing."
+          tags={['React', 'TypeScript', 'WebSockets', 'D3.js']}
+          demoUrl="https://github.com"
+          githubUrl="https://github.com"
+          mockupType="dashboard"
+          accentColor="#ff9500"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects-section {
+    position: relative;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .section-header {
+    margin-bottom: var(--spacing-xxl);
+    max-width: 600px;
+  }
+
+  .section-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: inline-block;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .section-title {
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text);
+  }
+
+  .section-subtitle {
+    color: var(--color-text-muted);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+  }
+
+  /* Responsive tweak */
+  @media (max-width: 834px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+    }
+  }
+</style>

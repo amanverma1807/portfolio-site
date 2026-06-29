@@ -1,0 +1,174 @@
+---
+import Button from './Button.astro';
+---
+
+<section id="contact" class="contact-section tile-bg-black">
+  <div class="section-container">
+    <div class="contact-card reveal">
+      <div class="contact-info">
+        <span class="contact-badge">Get in Touch</span>
+        <h2 class="display-lg contact-title">Let's build together.</h2>
+        <p class="body-copy contact-subtitle">
+          If you have a backend script to automate, an API tier to design, or a web platform to build, let's connect.
+        </p>
+
+        <div class="support-channels">
+          <div class="channel-row">
+            <span class="channel-label">Email</span>
+            <a href="mailto:aman@amanverma.online" class="channel-link">aman@amanverma.online</a>
+          </div>
+          <div class="channel-row">
+            <span class="channel-label">GitHub</span>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="channel-link">github.com/amanverma</a>
+          </div>
+          <div class="channel-row">
+            <span class="channel-label">LinkedIn</span>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="channel-link">linkedin.com/in/amanverma</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-container">
+        <form class="contact-form" action="#" method="POST" id="portfolio-contact-form">
+          <div class="form-row">
+            <label for="form-name" class="caption-strong">Name</label>
+            <input type="text" id="form-name" name="name" required placeholder="John Doe" class="support-input" />
+          </div>
+          
+          <div class="form-row">
+            <label for="form-email" class="caption-strong">Email Address</label>
+            <input type="email" id="form-email" name="email" required placeholder="john@example.com" class="support-input" />
+          </div>
+          
+          <div class="form-row">
+            <label for="form-message" class="caption-strong">Message</label>
+            <textarea id="form-message" name="message" required rows="4" placeholder="Tell me about your project..." class="support-input support-textarea"></textarea>
+          </div>
+
+          <div class="form-actions">
+            <Button type="submit" variant="primary" style="width: 100%;">Send Message</Button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    position: relative;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .contact-card {
+    background-color: var(--color-bg-tile-1);
+    border: 1px solid var(--color-border);
+    border-radius: var(--rounded-lg);
+    padding: var(--spacing-xxl) var(--spacing-lg);
+    display: grid;
+    grid-template-columns: 45% 50%;
+    gap: 5%;
+    align-items: center;
+  }
+
+  .contact-badge {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: inline-block;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .contact-title {
+    color: var(--color-text);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .contact-subtitle {
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-xl);
+    line-height: 1.5;
+  }
+
+  .support-channels {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--spacing-lg);
+  }
+
+  .channel-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+  }
+
+  .channel-label {
+    color: var(--color-text-muted-dark);
+  }
+
+  .channel-link {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .channel-link:hover {
+    color: var(--color-primary-hover);
+  }
+
+  /* Form Styling */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .form-row label {
+    color: var(--color-text);
+  }
+
+  .support-input {
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--color-border);
+    border-radius: var(--rounded-sm); /* Standard 8px input corners */
+    color: var(--color-text);
+    font-family: var(--font-text);
+    font-size: 14px;
+    padding: 10px 14px;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.25s ease, background-color 0.25s ease;
+  }
+
+  .support-input:focus {
+    border-color: var(--color-primary);
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  .support-textarea {
+    resize: none;
+  }
+
+  .form-actions {
+    margin-top: var(--spacing-xs);
+  }
+
+  /* Responsive styles */
+  @media (max-width: 834px) {
+    .contact-card {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-xxl);
+      padding: var(--spacing-lg) var(--spacing-md);
+    }
+  }
+</style>

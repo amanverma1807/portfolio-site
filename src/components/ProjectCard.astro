@@ -1,0 +1,498 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  tags: string[];
+  demoUrl?: string;
+  githubUrl?: string;
+  mockupType?: 'browser' | 'terminal' | 'dashboard';
+  accentColor?: string; // e.g. '#2997ff' or '#50e3c2'
+}
+
+const {
+  title,
+  description,
+  tags,
+  demoUrl,
+  githubUrl,
+  mockupType = 'browser',
+  accentColor = '#2997ff'
+} = Astro.props;
+---
+
+<div class="project-card reveal">
+  <!-- Mockup Header/Body -->
+  <div class="card-mockup" style={`--accent-color: ${accentColor}`}>
+    {mockupType === 'browser' && (
+      <div class="mockup-browser">
+        <div class="browser-header">
+          <div class="dot red"></div>
+          <div class="dot yellow"></div>
+          <div class="dot green"></div>
+          <div class="browser-address-bar">amanverma.online/app</div>
+        </div>
+        <div class="browser-body">
+          <div class="mock-ui-layout">
+            <div class="mock-sidebar"></div>
+            <div class="mock-content">
+              <div class="mock-hero"></div>
+              <div class="mock-grid">
+                <div class="mock-item"></div>
+                <div class="mock-item"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )}
+
+    {mockupType === 'terminal' && (
+      <div class="mockup-terminal">
+        <div class="terminal-header">
+          <div class="dot red"></div>
+          <div class="dot yellow"></div>
+          <div class="dot green"></div>
+          <span class="terminal-title">bash - amanverma@system</span>
+        </div>
+        <div class="terminal-body">
+          <div class="terminal-line"><span class="cmd-prompt">aman@online ~ %</span> python -m pipeline --init</div>
+          <div class="terminal-line success">[INFO] Loading engine: v4.2.1-prod</div>
+          <div class="terminal-line success">[INFO] Establishing backend data sockets... Done (12ms)</div>
+          <div class="terminal-line"><span class="cmd-prompt">aman@online ~ %</span> python run.py --daemon</div>
+          <div class="terminal-line pulse-line">● Service active & listening on port 8080...</div>
+        </div>
+      </div>
+    )}
+
+    {mockupType === 'dashboard' && (
+      <div class="mockup-dashboard">
+        <div class="dashboard-header">
+          <span class="dashboard-status">● Live Analytics</span>
+          <div class="dashboard-controls">
+            <div class="control-indicator"></div>
+          </div>
+        </div>
+        <div class="dashboard-body">
+          <div class="analytics-row">
+            <div class="analytics-chart">
+              <svg viewBox="0 0 100 35" class="chart-svg">
+                <path d="M0,35 Q15,10 30,22 T60,5 T90,20 L100,35 Z" fill={`url(#gradient-${title.replace(/\s+/g, '')})`} opacity="0.15"></path>
+                <path d="M0,35 Q15,10 30,22 T60,5 T90,20" fill="none" stroke={accentColor} stroke-width="2" stroke-linecap="round"></path>
+                <defs>
+                  <linearGradient id={`gradient-${title.replace(/\s+/g, '')}`} x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color={accentColor}></stop>
+                    <stop offset="100%" stop-color="transparent"></stop>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="analytics-metrics">
+              <div class="metric-block">
+                <span class="metric-label">Efficiency</span>
+                <span class="metric-val">98.4%</span>
+              </div>
+              <div class="metric-block">
+                <span class="metric-label">Latency</span>
+                <span class="metric-val">12ms</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )}
+  </div>
+
+  <!-- Card Content -->
+  <div class="card-details">
+    <div class="tag-badges">
+      {tags.map((tag) => <span class="tag-badge">{tag}</span>)}
+    </div>
+    
+    <h3 class="card-title display-md">{title}</h3>
+    <p class="card-description body-copy">{description}</p>
+    
+    <div class="card-actions">
+      {demoUrl && (
+        <a href={demoUrl} target="_blank" rel="noopener noreferrer" class="action-link demo-link btn-press">
+          <span>Live Demo</span>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        </a>
+      )}
+      {githubUrl && (
+        <a href={githubUrl} target="_blank" rel="noopener noreferrer" class="action-link github-link btn-press">
+          <span>Source Code</span>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+        </a>
+      )}
+    </div>
+  </div>
+</div>
+
+<style>
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-card-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--rounded-lg);
+    overflow: hidden;
+    height: 100%;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease, box-shadow 0.4s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255, 255, 255, 0.16);
+    box-shadow: rgba(0, 0, 0, 0.6) 0px 15px 35px -5px;
+  }
+
+  /* Mockup Visual */
+  .card-mockup {
+    background-color: #0b0b0c;
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--spacing-md) var(--spacing-md) 0;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  /* Window dot styles (traffic lights) */
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: var(--rounded-full);
+  }
+  .dot.red { background-color: #ff5f56; }
+  .dot.yellow { background-color: #ffbd2e; }
+  .dot.green { background-color: #27c93f; }
+
+  /* BROWSER MOCKUP */
+  .mockup-browser {
+    width: 100%;
+    height: 90%;
+    background-color: #161617;
+    border-radius: var(--rounded-sm) var(--rounded-sm) 0 0;
+    border: 1px solid var(--color-border);
+    border-bottom: none;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--product-shadow);
+  }
+
+  .browser-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px var(--spacing-sm);
+    background-color: #101011;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .browser-address-bar {
+    margin-left: 20px;
+    background-color: #1e1e20;
+    border-radius: var(--rounded-xs);
+    font-size: 8px;
+    color: var(--color-text-muted);
+    padding: 3px 20px;
+    width: 100%;
+    max-width: 180px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .browser-body {
+    flex: 1;
+    padding: var(--spacing-xs);
+    background-color: #161617;
+  }
+
+  .mock-ui-layout {
+    display: grid;
+    grid-template-columns: 24% 72%;
+    gap: 4%;
+    height: 100%;
+  }
+
+  .mock-sidebar {
+    background-color: rgba(255, 255, 255, 0.02);
+    border-radius: var(--rounded-xs);
+    border: 1px solid var(--color-border);
+  }
+
+  .mock-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  .mock-hero {
+    height: 40px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.06) 100%);
+    border-radius: var(--rounded-xs);
+    border: 1px solid var(--color-border);
+  }
+
+  .mock-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xs);
+    flex: 1;
+  }
+
+  .mock-item {
+    background-color: rgba(255, 255, 255, 0.02);
+    border-radius: var(--rounded-xs);
+    border: 1px solid var(--color-border);
+  }
+
+  /* TERMINAL MOCKUP */
+  .mockup-terminal {
+    width: 100%;
+    height: 90%;
+    background-color: #0d0e11;
+    border-radius: var(--rounded-sm) var(--rounded-sm) 0 0;
+    border: 1px solid var(--color-border);
+    border-bottom: none;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--product-shadow);
+  }
+
+  .terminal-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px var(--spacing-sm);
+    background-color: #15181e;
+    border-bottom: 1px solid var(--color-border);
+    position: relative;
+  }
+
+  .terminal-title {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    font-size: 9px;
+    color: var(--color-text-muted);
+    font-family: var(--font-text);
+  }
+
+  .terminal-body {
+    flex: 1;
+    padding: var(--spacing-sm);
+    font-family: monospace;
+    font-size: 9px;
+    color: #a9b1d6;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    overflow: hidden;
+  }
+
+  .terminal-line {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .cmd-prompt {
+    color: var(--accent-color);
+    font-weight: bold;
+  }
+
+  .terminal-line.success {
+    color: #9ece6a;
+  }
+
+  .pulse-line {
+    color: #f7768e;
+    animation: terminalPulse 2s infinite ease-in-out;
+  }
+
+  @keyframes terminalPulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+  }
+
+  /* DASHBOARD / ANALYTICS MOCKUP */
+  .mockup-dashboard {
+    width: 100%;
+    height: 90%;
+    background-color: #101011;
+    border-radius: var(--rounded-sm) var(--rounded-sm) 0 0;
+    border: 1px solid var(--color-border);
+    border-bottom: none;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--product-shadow);
+  }
+
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px var(--spacing-sm);
+    border-bottom: 1px solid var(--color-border);
+    background-color: #080809;
+  }
+
+  .dashboard-status {
+    font-size: 8px;
+    color: #4cd964;
+    font-weight: 600;
+  }
+
+  .dashboard-controls {
+    display: flex;
+    gap: 4px;
+  }
+
+  .control-indicator {
+    width: 12px;
+    height: 6px;
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 3px;
+  }
+
+  .dashboard-body {
+    flex: 1;
+    padding: var(--spacing-sm);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .analytics-row {
+    display: grid;
+    grid-template-columns: 60% 35%;
+    gap: 5%;
+    align-items: center;
+  }
+
+  .analytics-chart {
+    border: 1px solid var(--color-border);
+    border-radius: var(--rounded-xs);
+    background-color: rgba(255,255,255,0.01);
+    padding: 4px;
+  }
+
+  .chart-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .analytics-metrics {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .metric-block {
+    border: 1px solid var(--color-border);
+    border-radius: var(--rounded-xs);
+    background-color: rgba(255,255,255,0.01);
+    padding: 4px var(--spacing-xs);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .metric-label {
+    font-size: 7px;
+    color: var(--color-text-muted);
+  }
+
+  .metric-val {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  /* Card Details */
+  .card-details {
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .tag-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .tag-badge {
+    background-color: rgba(255, 255, 255, 0.06);
+    color: var(--color-text-muted);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: var(--rounded-pill);
+    border: 1px solid var(--color-border);
+    letter-spacing: -0.01em;
+  }
+
+  .card-title {
+    font-size: 21px !important; /* Overriding default big layout */
+    line-height: 1.25;
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text);
+  }
+
+  .card-description {
+    font-size: 14px;
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.45;
+    flex: 1;
+  }
+
+  .card-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: auto;
+  }
+
+  .action-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--color-primary);
+  }
+
+  .action-link svg {
+    transition: transform 0.2s ease;
+  }
+
+  .action-link:hover {
+    color: var(--color-primary-hover);
+  }
+
+  .action-link:hover svg {
+    transform: translate(1px, -1px);
+  }
+
+  .github-link {
+    color: var(--color-text-muted);
+  }
+
+  .github-link:hover {
+    color: var(--color-text);
+  }
+
+  .github-link:hover svg {
+    transform: scale(1.1);
+  }
+</style>

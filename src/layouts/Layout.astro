@@ -1,0 +1,77 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { 
+	title = "Aman Verma | Senior Developer & Systems Engineer", 
+	description = "Developer portfolio of Aman Verma, inspired by Apple's minimalist design philosophy. Specializing in Web Development, Python systems, APIs, and clean UX."
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		
+		<!-- SEO Meta Tags -->
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="author" content="Aman Verma" />
+		<meta name="keywords" content="Aman Verma, Software Engineer, Python Developer, Web Developer, Full Stack Developer, Astro, Design Portfolio, Apple Design" />
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content="/og-image.png" />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		
+		<!-- Preconnect to Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	</head>
+	<body>
+		<slot />
+
+		<script>
+			// Observe elements with the 'reveal' class to trigger Apple-like smooth scroll entrance
+			const initRevealObserver = () => {
+				const reveals = document.querySelectorAll('.reveal');
+				if (reveals.length === 0) return;
+
+				const observer = new IntersectionObserver((entries) => {
+					entries.forEach(entry => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add('active');
+							// Unobserve after showing
+							observer.unobserve(entry.target);
+						}
+					});
+				}, {
+					threshold: 0.05,
+					rootMargin: '0px 0px -40px 0px'
+				});
+
+				reveals.forEach(el => observer.observe(el));
+			};
+
+			// Run on initial load
+			initRevealObserver();
+
+			// For view transitions compatibility if added later
+			document.addEventListener('astro:after-swap', initRevealObserver);
+		</script>
+	</body>
+</html>

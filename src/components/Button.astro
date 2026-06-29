@@ -1,0 +1,75 @@
+---
+interface Props {
+  href?: string;
+  variant?: 'primary' | 'secondary';
+  id?: string;
+  class?: string;
+  [key: string]: any; // Catch-all for extra attributes like target, aria-label, etc.
+}
+
+const { 
+  href, 
+  variant = 'primary', 
+  id, 
+  class: className = '', 
+  ...rest 
+} = Astro.props;
+
+const Tag = href ? 'a' : 'button';
+---
+
+<Tag
+  href={href}
+  id={id}
+  class={`btn btn-${variant} btn-press ${className}`}
+  {...rest}
+>
+  <slot />
+</Tag>
+
+<style>
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-family: var(--font-text);
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.2;
+    padding: 11px 22px;
+    border-radius: var(--rounded-pill);
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.25s ease, border-color 0.25s ease, opacity 0.25s ease, transform 0.15s cubic-bezier(0.25, 1, 0.5, 1);
+    white-space: nowrap;
+  }
+
+  /* Primary button: Action Blue */
+  .btn-primary {
+    background-color: var(--color-primary);
+    color: #ffffff;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-primary-hover);
+  }
+
+  /* Secondary button: Ghost Action Blue */
+  .btn-secondary {
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+  }
+
+  .btn-secondary:hover {
+    background-color: rgba(41, 151, 255, 0.08);
+  }
+
+  /* Accessibility focus outline */
+  .btn:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 4px;
+  }
+</style>

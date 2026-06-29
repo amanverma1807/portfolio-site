@@ -1,0 +1,84 @@
+---
+---
+
+<section id="about" class="about-section tile-bg-1">
+  <div class="section-container">
+    <div class="about-grid reveal">
+      <div class="about-statement">
+        <h2 class="display-lg statement-text">
+          Believer in <span class="white-text">focused design</span>, robust system architecture, and code that is built to last.
+        </h2>
+      </div>
+
+      <div class="about-details">
+        <p class="body-copy text-block">
+          I am a software developer with a dual passion for building high-performance systems and crafting user interfaces. I engineer solutions that range from server-side scripts to client-side layouts, ensuring that every layer of the application is fast and accessible.
+        </p>
+        
+        <p class="body-copy text-block">
+          Over the past few years, I have specialized in the <strong>Python and JavaScript</strong> ecosystems. My work involves designing and developing custom APIs, data pipelines, scraping infrastructures, and modern static or server-rendered web applications.
+        </p>
+        
+        <p class="body-copy text-block text-muted">
+          My development philosophy matches Apple's core principle: UI/UX should remain clear and recede to let content speak, while underneath sits a highly optimized machine.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-section {
+    position: relative;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 45% 50%;
+    gap: 5%;
+    align-items: start;
+  }
+
+  .statement-text {
+    color: var(--color-text-muted);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .white-text {
+    color: var(--color-text);
+  }
+
+  .about-details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+
+  .text-block {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  .text-block strong {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+
+  .text-muted {
+    color: var(--color-text-muted-dark);
+  }
+
+  /* Responsive styles */
+  @media (max-width: 834px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-xl);
+    }
+    
+    .statement-text {
+      margin-bottom: var(--spacing-sm);
+    }
+  }
+</style>

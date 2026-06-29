@@ -1,0 +1,123 @@
+---
+import Button from './Button.astro';
+---
+
+<section class="hero-section tile-bg-black">
+  <div class="glow-container">
+    <div class="ambient-glow"></div>
+  </div>
+
+  <div class="section-container hero-container">
+    <div class="hero-content reveal">
+      <span class="intro-label">Aman Verma</span>
+      <h1 class="hero-display title">
+        Engineering clean code,<br />
+        <span class="blue-accent">architecting performance.</span>
+      </h1>
+      <p class="lead-airy subtitle">
+        I design resilient backend systems, create automated Python pipelines, and craft immersive web experiences.
+      </p>
+      
+      <div class="hero-ctas reveal reveal-delay-2">
+        <Button href="#projects" variant="primary">Featured Work</Button>
+        <Button href="#contact" variant="secondary">Get in Touch</Button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding-top: 52px; /* Top nav buffer */
+  }
+
+  /* Backdrop glow spotlight */
+  .glow-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ambient-glow {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(41, 151, 255, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
+    filter: blur(40px);
+    pointer-events: none;
+  }
+
+  .hero-container {
+    z-index: 2;
+    text-align: center;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .intro-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .title {
+    color: var(--color-text);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .blue-accent {
+    color: var(--color-primary);
+    background: linear-gradient(90deg, #2997ff 0%, #0066cc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .subtitle {
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-xxl);
+    max-width: 600px;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+  }
+
+  /* Responsive tweaks */
+  @media (max-width: 640px) {
+    .ambient-glow {
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(41, 151, 255, 0.15) 0%, rgba(0, 0, 0, 0) 80%);
+    }
+
+    .hero-ctas {
+      flex-direction: column;
+      width: 100%;
+      max-width: 280px;
+    }
+  }
+</style>
