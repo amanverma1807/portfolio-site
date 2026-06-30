@@ -1,39 +1,43 @@
 ---
 import ProjectCard from './ProjectCard.astro';
+import gymforgeHome from '../assets/gymforge-home.png';
+import attendancecalcHome from '../assets/attendancecalc-home.png';
 ---
 
 <section id="projects" class="projects-section tile-bg-black">
   <div class="section-container">
     <div class="section-header reveal">
-      <span class="section-label">Case Studies</span>
-      <h2 class="display-lg section-title">Featured Projects</h2>
+      <span class="section-label">Featured Work</span>
+      <h2 class="display-lg section-title">Featured Web Projects</h2>
       <p class="body-copy section-subtitle">
-        A selection of high-performance web applications built with modern frontend frameworks and backend databases.
+        High-performance web applications built with modern frontend frameworks, optimized for speed and accessibility.
       </p>
     </div>
 
     <div class="projects-grid">
-      <div class="grid-item">
+      <div class="grid-item reveal reveal-delay-1">
         <ProjectCard
-          title="Zenith Headless Commerce"
-          description="A fast headless e-commerce frontend built using Astro, React, and Redis. Features sub-50ms TTFB, fully integrated Stripe cart flows, and multi-currency localized routing."
-          tags={['Astro', 'React', 'Redis', 'Stripe API']}
-          demoUrl="https://github.com"
-          githubUrl="https://github.com"
+          title="Gym Toolkit"
+          description="An all-in-one fitness web application that provides multiple gym-related tools to help users calculate, track, and improve their fitness journey."
+          tags={['Astro', 'JavaScript', 'HTML', 'CSS']}
+          demoUrl="#"
+          githubUrl="#"
           mockupType="browser"
           accentColor="#2997ff"
+          screenshot={gymforgeHome.src}
         />
       </div>
       
-      <div class="grid-item">
+      <div class="grid-item reveal reveal-delay-2">
         <ProjectCard
-          title="Veloce Analytics Portal"
-          description="A real-time telemetry dashboard visualizing server health metrics and data stream events. Employs persistent WebSockets for low-latency live graphing."
-          tags={['React', 'TypeScript', 'WebSockets', 'D3.js']}
-          demoUrl="https://github.com"
-          githubUrl="https://github.com"
-          mockupType="dashboard"
+          title="Attendance Calculator"
+          description="A web application that helps students calculate attendance percentage and determine how many classes they need to attend or can safely miss."
+          tags={['Astro', 'JavaScript', 'HTML', 'CSS']}
+          demoUrl="#"
+          githubUrl="#"
+          mockupType="browser"
           accentColor="#ff9500"
+          screenshot={attendancecalcHome.src}
         />
       </div>
     </div>
@@ -76,7 +80,6 @@ import ProjectCard from './ProjectCard.astro';
     gap: var(--spacing-lg);
   }
 
-  /* Responsive tweak */
   @media (max-width: 834px) {
     .projects-grid {
       grid-template-columns: 1fr;

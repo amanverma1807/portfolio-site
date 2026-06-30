@@ -7,6 +7,7 @@ interface Props {
   githubUrl?: string;
   mockupType?: 'browser' | 'terminal' | 'dashboard';
   accentColor?: string; // e.g. '#2997ff' or '#50e3c2'
+  screenshot?: string;
 }
 
 const {
@@ -16,11 +17,21 @@ const {
   demoUrl,
   githubUrl,
   mockupType = 'browser',
-  accentColor = '#2997ff'
+  accentColor = '#2997ff',
+  screenshot
 } = Astro.props;
 ---
 
 <div class="project-card reveal">
+  {screenshot && (
+    <div class="card-screenshot">
+      <img
+        src={screenshot}
+        alt={`${title} screenshot`}
+        loading="lazy"
+      />
+    </div>
+  )}
   <!-- Mockup Header/Body -->
   <div class="card-mockup" style={`--accent-color: ${accentColor}`}>
     {mockupType === 'browser' && (
@@ -138,6 +149,26 @@ const {
     overflow: hidden;
     height: 100%;
     transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease, box-shadow 0.4s ease;
+  }
+
+  .card-screenshot {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .card-screenshot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px 16px 0 0;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .project-card:hover .card-screenshot img {
+    transform: scale(1.03);
   }
 
   .project-card:hover {

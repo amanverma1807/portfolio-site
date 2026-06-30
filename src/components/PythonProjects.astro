@@ -1,5 +1,5 @@
 ---
-import ProjectCard from './ProjectCard.astro';
+import PythonProjectCard from './PythonProjectCard.astro';
 ---
 
 <section id="python-projects" class="python-projects-section tile-bg-2">
@@ -8,30 +8,32 @@ import ProjectCard from './ProjectCard.astro';
       <span class="section-label">Backend & Automation</span>
       <h2 class="display-lg section-title">Python Projects</h2>
       <p class="body-copy section-subtitle">
-        Script utilities, custom web scrapers, data pipelines, and API integrations engineered with Python.
+        Script utilities, data analysis tools, and automation scripts engineered with Python for real-world problem solving.
       </p>
     </div>
 
     <div class="projects-grid">
-      <div class="grid-item">
-        <ProjectCard
-          title="Aether Parser Engine"
-          description="An asynchronous web scraping pipeline designed to extract nested retail catalogs. Implements request throttling, IP rotation, and schemas checking via Pydantic."
-          tags={['Python', 'asyncio', 'Playwright', 'PostgreSQL']}
-          githubUrl="https://github.com"
-          mockupType="terminal"
-          accentColor="#30d158"
+      <div class="grid-item reveal reveal-delay-1">
+        <PythonProjectCard
+          title="Invoice Generator"
+          description="Generates professional invoices automatically using Python with customizable templates and export options."
+          githubUrl="#"
         />
       </div>
       
-      <div class="grid-item">
-        <ProjectCard
-          title="PyFlow Data ETL Pipeline"
-          description="A background daemon task scheduler that processes large-scale text transformation queues. Logs runtime alerts, memory footprints, and pipeline errors."
-          tags={['Python', 'RabbitMQ', 'Pandas', 'Docker']}
-          githubUrl="https://github.com"
-          mockupType="terminal"
-          accentColor="#bf5af2"
+      <div class="grid-item reveal reveal-delay-2">
+        <PythonProjectCard
+          title="Student Grade Finder"
+          description="Calculates student grades based on marks and grading criteria with detailed reporting and analytics."
+          githubUrl="#"
+        />
+      </div>
+      
+      <div class="grid-item reveal reveal-delay-3">
+        <PythonProjectCard
+          title="Phone Sales Analyzer"
+          description="Analyzes phone sales data and provides useful sales insights with visualizations and trend detection."
+          githubUrl="#"
         />
       </div>
     </div>
@@ -70,15 +72,20 @@ import ProjectCard from './ProjectCard.astro';
 
   .projects-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-lg);
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
   }
 
-  /* Responsive tweak */
-  @media (max-width: 834px) {
+  @media (max-width: 1068px) {
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
     .projects-grid {
       grid-template-columns: 1fr;
-      gap: var(--spacing-lg);
+      gap: var(--spacing-sm);
     }
   }
 </style>
