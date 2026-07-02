@@ -2,10 +2,11 @@
 interface Props {
   title: string;
   description: string;
+  demoUrl?: string;
   githubUrl?: string;
 }
 
-const { title, description, githubUrl } = Astro.props;
+const { title, description, demoUrl, githubUrl } = Astro.props;
 ---
 
 <div class="python-project-card reveal">
@@ -19,6 +20,16 @@ const { title, description, githubUrl } = Astro.props;
   </div>
   
   <div class="card-footer">
+    {demoUrl && (
+      <a href={demoUrl} target="_blank" rel="noopener noreferrer" class="demo-link btn-press">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+          <polyline points="15 3 21 3 21 9"></polyline>
+          <line x1="10" y1="14" x2="21" y2="3"></line>
+        </svg>
+        <span>Live Demo</span>
+      </a>
+    )}
     {githubUrl && (
       <a href={githubUrl} target="_blank" rel="noopener noreferrer" class="github-link btn-press">
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -93,6 +104,38 @@ const { title, description, githubUrl } = Astro.props;
     padding: 0 var(--spacing-lg) var(--spacing-lg);
     border-top: 1px solid var(--color-border);
     background-color: rgba(255, 255, 255, 0.01);
+    display: flex;
+    gap: var(--spacing-md);
+  }
+
+  .demo-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--color-primary);
+    padding: 8px 12px;
+    border-radius: var(--rounded-md);
+    border: 1px solid var(--color-border);
+    background-color: rgba(255, 255, 255, 0.02);
+    transition: all 0.2s ease;
+  }
+
+  .demo-link:hover {
+    color: var(--color-primary-hover);
+    border-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.05);
+    transform: translateY(-1px);
+  }
+
+  .demo-link svg {
+    transition: transform 0.2s ease;
+  }
+
+  .demo-link:hover svg {
+    transform: translate(1px, -1px);
   }
 
   .github-link {
