@@ -9,44 +9,40 @@ import Button from './Button.astro';
         <span class="contact-badge">Get in Touch</span>
         <h2 class="display-lg contact-title">Let's build together.</h2>
         <p class="body-copy contact-subtitle">
-          If you have a backend script to automate, an API tier to design, or a web platform to build, let's connect.
+          If you have a project, internship opportunity, freelance work, or collaboration in mind, I'd be happy to connect.
         </p>
 
         <div class="support-channels">
           <div class="channel-row">
             <span class="channel-label">Email</span>
-            <a href="mailto:aman@amanverma.online" class="channel-link">aman@amanverma.online</a>
+            <a href="mailto:aff030832@gmail.com" class="channel-link">Email Me</a>
           </div>
           <div class="channel-row">
             <span class="channel-label">GitHub</span>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="channel-link">github.com/amanverma</a>
-          </div>
-          <div class="channel-row">
-            <span class="channel-label">LinkedIn</span>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="channel-link">linkedin.com/in/amanverma</a>
+            <a href="https://github.com/amanverma1807" target="_blank" rel="noopener noreferrer" class="channel-link">AmanVerma1807</a>
           </div>
         </div>
       </div>
 
       <div class="contact-form-container">
-        <form class="contact-form" action="#" method="POST" id="portfolio-contact-form">
+        <form class="contact-form" id="portfolio-contact-form">
           <div class="form-row">
             <label for="form-name" class="caption-strong">Name</label>
-            <input type="text" id="form-name" name="name" required placeholder="John Doe" class="support-input" />
+            <input type="text" id="form-name" name="name" required placeholder="Aman Verma" class="support-input" />
           </div>
-          
+
           <div class="form-row">
             <label for="form-email" class="caption-strong">Email Address</label>
-            <input type="email" id="form-email" name="email" required placeholder="john@example.com" class="support-input" />
+            <input type="email" id="form-email" name="email" required placeholder="aff030832@gmail.com" class="support-input" />
           </div>
-          
+
           <div class="form-row">
             <label for="form-message" class="caption-strong">Message</label>
-            <textarea id="form-message" name="message" required rows="4" placeholder="Tell me about your project..." class="support-input support-textarea"></textarea>
+            <textarea id="form-message" name="message" required rows="4" placeholder="Tell me about your project, internship opportunity, or collaboration..." class="support-input support-textarea"></textarea>
           </div>
 
           <div class="form-actions">
-            <Button type="submit" variant="primary" style="width: 100%;">Send Message</Button>
+            <Button type="button" variant="primary" style="width: 100%;" onclick="window.location.href='mailto:aff030832@gmail.com?subject=' + encodeURIComponent(document.getElementById('form-name').value + ' - Portfolio Contact') + '&body=' + encodeURIComponent('Name: ' + document.getElementById('form-name').value + '%0AEmail: ' + document.getElementById('form-email').value + '%0A%0A' + document.getElementById('form-message').value)">Send Message</Button>
           </div>
         </form>
       </div>

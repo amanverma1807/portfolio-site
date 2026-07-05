@@ -2,67 +2,13 @@
 ---
 
 <footer class="global-footer tile-bg-1">
-  <div class="footer-container">
-    <!-- Legal Notes / Disclaimer -->
-    <div class="footer-disclaimer reveal">
-      <p class="fine-print disclaimer-text">
-        This portfolio is built using Astro and Vanilla CSS. Inspired by the aesthetic values of Apple's web products: minimalism, typography, and functional spacing. It is designed to act as a structured museum gallery of developer engineering.
-      </p>
-      <p class="fine-print disclaimer-text">
-        Mockups rendered above are dynamically drawn using native web layers and styled templates, demonstrating layout styling and responsive CSS performance.
-      </p>
-    </div>
-
-    <hr class="footer-divider" />
-
-    <!-- Link Directory Grid -->
-    <div class="footer-directory reveal reveal-delay-1">
-      <div class="directory-column">
-        <h4 class="caption-strong directory-title">Explore</h4>
-        <ul class="directory-list">
-          <li><a href="#" class="footer-link">Home</a></li>
-          <li><a href="#about" class="footer-link">About</a></li>
-          <li><a href="#projects" class="footer-link">Featured Projects</a></li>
-          <li><a href="#python-projects" class="footer-link">Python Work</a></li>
-        </ul>
-      </div>
-
-      <div class="directory-column">
-        <h4 class="caption-strong directory-title">Competencies</h4>
-        <ul class="directory-list">
-          <li><a href="#skills" class="footer-link">Backend Systems</a></li>
-          <li><a href="#skills" class="footer-link">Pipelines & Scripts</a></li>
-          <li><a href="#skills" class="footer-link">Web Engineering</a></li>
-          <li><a href="#tech" class="footer-link">Tool Stack</a></li>
-        </ul>
-      </div>
-
-      <div class="directory-column">
-        <h4 class="caption-strong directory-title">Direct Links</h4>
-        <ul class="directory-list">
-          <li><a href="mailto:aman@amanverma.online" class="footer-link">Email Direct</a></li>
-          <li><a href="#contact" class="footer-link">Support Form</a></li>
-          <li><a href="https://github.com" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub Feed</a></li>
-          <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn Connection</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <hr class="footer-divider" />
-
-    <!-- Footer Copyright & Legal Links -->
-    <div class="footer-legal reveal reveal-delay-2">
-      <div class="legal-left">
-        <span class="fine-print legal-text">Copyright © 2026 Aman Verma. All rights reserved.</span>
-      </div>
-      <div class="legal-right">
-        <ul class="legal-links">
-          <li><a href="#" class="fine-print legal-link">Privacy Policy</a></li>
-          <li><a href="#" class="fine-print legal-link">Terms of Use</a></li>
-          <li><a href="#" class="fine-print legal-link">Site Map</a></li>
-        </ul>
-      </div>
-    </div>
+  <div class="footer-container reveal">
+    <p class="fine-print footer-text">
+      Designed and developed by Aman Verma using Astro, TypeScript, Tailwind CSS and Python.
+    </p>
+    <p class="fine-print footer-copyright">
+      &copy; 2026 Aman Verma. All Rights Reserved.
+    </p>
   </div>
 </footer>
 
@@ -77,104 +23,21 @@
     max-width: 1024px;
     margin: 0 auto;
     padding: 0 var(--spacing-lg);
-  }
-
-  .footer-disclaimer {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: var(--spacing-xs);
-    margin-bottom: var(--spacing-lg);
+    text-align: center;
   }
 
-  .disclaimer-text {
-    color: var(--color-text-muted-dark);
+  .footer-text {
+    color: var(--color-text-muted);
+    max-width: 600px;
     line-height: 1.5;
   }
 
-  .footer-divider {
-    border: none;
-    border-top: 1px solid var(--color-border);
-    margin: var(--spacing-md) 0;
-  }
-
-  /* Link stacks */
-  .footer-directory {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-lg);
-    margin-bottom: var(--spacing-lg);
-  }
-
-  .directory-title {
-    color: var(--color-text);
-    margin-bottom: var(--spacing-sm);
-  }
-
-  .directory-list {
-    list-style: none;
-    padding: 0;
-  }
-
-  .footer-link {
-    font-size: 13px;
-    font-weight: 400;
-    color: var(--color-text-muted);
-    text-decoration: none;
-    line-height: 2.41; /* Apple's relaxed link spacing standard */
-    display: inline-block;
-    transition: color 0.2s ease;
-  }
-
-  .footer-link:hover {
-    color: var(--color-text);
-  }
-
-  /* Bottom Row */
-  .footer-legal {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: var(--spacing-md);
-    padding-top: var(--spacing-xs);
-  }
-
-  .legal-text {
+  .footer-copyright {
     color: var(--color-text-muted-dark);
-  }
-
-  .legal-links {
-    list-style: none;
-    display: flex;
-    gap: var(--spacing-md);
-    padding: 0;
-  }
-
-  .legal-link {
-    color: var(--color-text-muted-dark);
-    text-decoration: none;
-    transition: color 0.2s ease;
-  }
-
-  .legal-link:hover {
-    color: var(--color-text-muted);
-  }
-
-  /* Responsive layout collapse */
-  @media (max-width: 640px) {
-    .footer-directory {
-      grid-template-columns: 1fr;
-      gap: var(--spacing-lg);
-    }
-    
-    .footer-legal {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    
-    .legal-links {
-      flex-wrap: wrap;
-      gap: var(--spacing-sm);
-    }
   }
 </style>
