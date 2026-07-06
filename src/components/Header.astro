@@ -4,9 +4,9 @@ import Button from './Button.astro';
 
 <header id="global-header">
   <div class="nav-container">
-    <a href="#" class="logo-link" aria-label="Aman Verma Portfolio Home">
-      <span class="monogram">AV</span>
-      <span class="logo-text">amanverma.online</span>
+    <a href="#hero" class="logo-link" aria-label="Aman Verma Portfolio Home">
+      <img src="/favicon.svg" alt="" class="monogram" width="40" height="40" />
+      <span class="logo-text">Aman Verma</span>
     </a>
 
     <!-- Desktop Navigation -->
@@ -61,7 +61,7 @@ import Button from './Button.astro';
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
     border-bottom: 1px solid var(--color-border);
-    height: 52px; /* Apple sub-nav height standard */
+    height: 64px;
     display: flex;
     align-items: center;
     transition: background-color 0.3s ease;
@@ -81,7 +81,7 @@ import Button from './Button.astro';
   .logo-link {
     display: flex;
     align-items: center;
-    gap: var(--spacing-xs);
+    gap: 14px;
     text-decoration: none;
     color: var(--color-text);
     font-weight: 600;
@@ -93,22 +93,16 @@ import Button from './Button.astro';
   }
 
   .monogram {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-    background-color: var(--color-text);
-    color: var(--color-bg-black);
-    border-radius: var(--rounded-sm);
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: -0.05em;
+    width: 40px;
+    height: 40px;
+    border-radius: 11px;
+    object-fit: cover;
   }
 
   .logo-text {
-    font-size: 14px;
-    letter-spacing: -0.02em;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.03em;
     font-family: var(--font-display);
   }
 
@@ -180,10 +174,10 @@ import Button from './Button.astro';
   .mobile-drawer {
     display: none;
     position: fixed;
-    top: 52px;
+    top: 64px;
     left: 0;
     width: 100vw;
-    height: calc(100vh - 52px);
+    height: calc(100vh - 64px);
     background-color: var(--color-bg-black);
     z-index: 105;
     padding: var(--spacing-xl);
