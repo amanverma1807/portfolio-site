@@ -20,7 +20,7 @@ import Button from './Button.astro';
       
       <div class="hero-ctas reveal reveal-delay-2">
         <Button href="#projects" variant="primary">View Projects</Button>
-        <Button href="#contact" variant="secondary">Contact Me</Button>
+        <Button href="https://github.com/amanverma1807" variant="secondary" target="_blank" rel="noopener noreferrer">GitHub</Button>
       </div>
     </div>
   </div>
@@ -104,6 +104,21 @@ import Button from './Button.astro';
     display: flex;
     gap: var(--spacing-md);
     justify-content: center;
+  }
+
+  .hero-ctas :global(.btn) {
+    transition: all 0.25s ease;
+  }
+
+  .hero-ctas :global(.btn-primary):hover {
+    transform: translateY(-2px);
+    filter: brightness(1.15);
+  }
+
+  .hero-ctas :global(.btn-secondary):hover {
+    transform: translateY(-2px);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 16px rgba(41, 151, 255, 0.25);
   }
 
   /* Responsive tweaks */
