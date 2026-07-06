@@ -118,11 +118,34 @@ import Button from './Button.astro';
     font-weight: 400;
     color: var(--color-text-muted);
     text-decoration: none;
+    position: relative;
+    padding-bottom: 4px;
     transition: color 0.25s ease;
+  }
+
+  .nav-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1.5px;
+    background-color: var(--color-primary);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.25s ease;
   }
 
   .nav-item:hover {
     color: var(--color-text);
+  }
+
+  .nav-item.active {
+    color: var(--color-primary);
+  }
+
+  .nav-item.active::after {
+    transform: scaleX(1);
   }
 
   .nav-cta {
@@ -258,7 +281,7 @@ import Button from './Button.astro';
       const isOpen = header.classList.toggle('menu-open');
       trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       drawer.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
-      
+
       if (isOpen) {
         document.body.style.overflow = 'hidden';
       } else {
@@ -275,12 +298,10 @@ import Button from './Button.astro';
 
     trigger.addEventListener('click', toggleMenu);
 
-    // Close when clicking mobile links
     drawerLinks.forEach(link => {
       link.addEventListener('click', closeMenu);
     });
 
-    // Close on escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && header.classList.contains('menu-open')) {
         closeMenu();
@@ -289,6 +310,36 @@ import Button from './Button.astro';
     });
   };
 
+  const initActiveNav = () => {
+    const navLinks = document.querySelectorAll('.desktop-nav .nav-item');
+    const sectionIds = Array.from(navLinks).map(link => link.getAttribute('href')?.replace('#', ''));
+
+    if (!navLinks.length || !sectionIds.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            navLinks.forEach(link => {
+              link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+            });
+          }
+        });
+      },
+      { rootMargin: '-64px 0px -60% 0px', threshold: 0 }
+    );
+
+    sectionIds.forEach(id => {
+      const section = document.getElementById(id);
+      if (section) observer.observe(section);
+    });
+  };
+
   initNavDrawer();
-  document.addEventListener('astro:after-swap', initNavDrawer);
+  initActiveNav();
+  document.addEventListener('astro:after-swap', () => {
+    initNavDrawer();
+    initActiveNav();
+  });
 </script>
