@@ -1,2 +1,0 @@
--always use the skills in agents\skills folder for this project 
--always use DESIGN.md file for the project design
