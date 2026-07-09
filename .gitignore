@@ -1,24 +1,37 @@
-# build output
+# AI / Assistant folders
+.agents/
+.aider*/
+.claude/
+.mimocode/
+
+# AI generated docs
+AGENTS.md
+CLAUDE.md
+DESIGN.md
+
+# Logs
+*.log
+
+# Environment variables
+.env
+.env.*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build output
 dist/
 
-# generated types
-.astro/
-
-# dependencies
+# Dependencies
 node_modules/
 
-# logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
+# IDE
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
 
-# environment variables
-.env
-.env.production
-
-# macOS-specific files
-.DS_Store
-
-# jetbrains setting folder
-.idea/
+# Wrangler
+.wrangler/
