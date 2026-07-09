@@ -9,7 +9,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "deploy": "wrangler pages deploy dist",
+    "deploy": "wrangler pages deploy dist --project-name amanverma-online",
     "release": "astro build && wrangler pages deploy dist",
     "astro": "astro"
   },
