@@ -25,6 +25,11 @@ A modern, fast, and responsive personal portfolio built with **Astro**. This web
 * CSS
 * Cloudflare Pages
 
+## Screenshots
+
+![Portfolio Preview](./src/assets/portfolio-preview.png)
+
+
 ## 📂 Featured Projects
 
 ### GymForge
